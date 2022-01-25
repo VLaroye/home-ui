@@ -1,4 +1,4 @@
-# tcc-home
+# home-ui
 
 ## Project setup
 ```
