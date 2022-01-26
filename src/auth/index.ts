@@ -45,6 +45,8 @@ async function handleRedirectCallback() {
 }
 
 function loginWithRedirect(o: RedirectLoginOptions) {
+  console.log('toto', o.appState);
+
   return client.loginWithRedirect(o);
 }
 
@@ -83,11 +85,18 @@ const routeGuard: NavigationGuardWithThis<undefined> = (
 ) => {
   const { isAuthenticated, loading, loginWithRedirect } = authPlugin;
 
+  console.log({
+    loading: loading.value,
+    isAuthenticated: isAuthenticated.value,
+  });
+
   const verify = async () => {
     // If the user is authenticated, continue with the route
     if (isAuthenticated.value) {
       return next();
     }
+
+    console.log('to', to);
 
     // Otherwise, log in
     await loginWithRedirect({ appState: { targetUrl: to.fullPath } });
@@ -109,7 +118,6 @@ const routeGuard: NavigationGuardWithThis<undefined> = (
 interface Auth0PluginOptions {
   domain: string;
   clientId: string;
-  audience: string;
   redirectUri: string;
 
   onRedirectCallback(appState: any): void;
@@ -121,7 +129,6 @@ async function init(options: Auth0PluginOptions): Promise<Plugin> {
     // client_id: process.env.VUE_APP_AUTH0_CLIENT_KEY,
     domain: options.domain,
     client_id: options.clientId,
-    audience: options.audience,
     redirect_uri: options.redirectUri,
   });
 

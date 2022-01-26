@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import Home from '../views/Home.vue';
+import { Auth0 } from '../auth/index';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -22,5 +23,7 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
 });
+
+router.beforeEach(Auth0.routeGuard);
 
 export default router;
