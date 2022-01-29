@@ -5,11 +5,12 @@ import createAuth0Client, {
   GetIdTokenClaimsOptions,
   GetTokenSilentlyOptions,
   GetTokenWithPopupOptions,
+  IdToken,
   LogoutOptions,
   RedirectLoginOptions,
   User,
 } from '@auth0/auth0-spa-js';
-import { App, Plugin, computed, reactive, watchEffect } from 'vue';
+import { App, Plugin, computed, reactive, watchEffect, ComputedRef } from 'vue';
 import { NavigationGuardWithThis } from 'vue-router';
 
 let client: Auth0Client;
@@ -22,7 +23,7 @@ interface Auth0PluginState {
   error: any;
 }
 
-const state = reactive<Auth0PluginState>({
+export const state = reactive<Auth0PluginState>({
   loading: true,
   isAuthenticated: false,
   user: {},
@@ -66,7 +67,21 @@ function logout(o: LogoutOptions) {
   return client.logout(o);
 }
 
-const authPlugin = {
+export type AuthPlugin = {
+  isAuthenticated: ComputedRef<boolean>;
+  loading: ComputedRef<boolean>;
+  user: ComputedRef<User | undefined>;
+  getIdTokenClaims: (
+    o: GetIdTokenClaimsOptions,
+  ) => Promise<IdToken | undefined>;
+  getTokenSilently: (o: GetTokenSilentlyOptions) => Promise<string>;
+  getTokenWithPopup: (o: GetTokenWithPopupOptions) => Promise<string>;
+  handleRedirectCallback: () => Promise<void>;
+  loginWithRedirect: (o: RedirectLoginOptions) => Promise<void>;
+  logout: (o: LogoutOptions) => void;
+};
+
+const authPlugin: AuthPlugin = {
   isAuthenticated: computed(() => state.isAuthenticated),
   loading: computed(() => state.loading),
   user: computed(() => state.user),
@@ -85,18 +100,11 @@ const routeGuard: NavigationGuardWithThis<undefined> = (
 ) => {
   const { isAuthenticated, loading, loginWithRedirect } = authPlugin;
 
-  console.log({
-    loading: loading.value,
-    isAuthenticated: isAuthenticated.value,
-  });
-
   const verify = async () => {
     // If the user is authenticated, continue with the route
     if (isAuthenticated.value) {
       return next();
     }
-
-    console.log('to', to);
 
     // Otherwise, log in
     await loginWithRedirect({ appState: { targetUrl: to.fullPath } });

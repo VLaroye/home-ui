@@ -1,7 +1,48 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div class="global-container bg-gray-100 bg-opacity-70">
+    <div class="top-nav">
+      <top-nav />
+    </div>
+    <div class="content">
+      <router-view />
+    </div>
+    <div class="bottom-nav">
+      <bottom-nav />
+    </div>
   </div>
-  <router-view />
 </template>
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+import TopNav from './components/TopNav.vue';
+import BottomNav from './components/BottomNav.vue';
+
+export default defineComponent({
+  name: 'Home',
+  components: { TopNav, BottomNav },
+});
+</script>
+
+<style lang="scss" scoped>
+.global-container {
+  display: grid;
+  grid-template-rows: 4em auto 3.5em;
+  grid-template-areas:
+    'top-nav'
+    'content'
+    'bottom-nav';
+  height: 100vh;
+
+  & .top-nav {
+    grid-area: top-nav;
+  }
+
+  & .content {
+    grid-area: content;
+  }
+
+  & .bottom-nav {
+    grid-area: bottom-nav;
+  }
+}
+</style>

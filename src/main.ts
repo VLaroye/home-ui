@@ -2,9 +2,19 @@ import { createApp } from 'vue';
 import { Auth0 } from '@/auth';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faLink, faUser, faPowerOff } from '@fortawesome/free-solid-svg-icons';
+import {
+  faColumns,
+  faUser,
+  faPowerOff,
+  faHome,
+  faBars,
+  faBolt,
+  faChartLine,
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import router from './router';
+import router from './plugins/router';
+import client from './plugins/axios';
+import './css/tailwind.css';
 
 import App from './App.vue';
 
@@ -22,7 +32,16 @@ async function init() {
     redirectUri: window.location.origin,
   });
   const app = createApp(App);
-  library.add(faLink, faUser, faPowerOff);
+  app.provide('$http', client);
+  library.add(
+    faColumns,
+    faUser,
+    faPowerOff,
+    faHome,
+    faBars,
+    faBolt,
+    faChartLine,
+  );
   app
     .use(AuthPlugin)
     .use(router)
