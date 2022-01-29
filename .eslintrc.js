@@ -18,5 +18,6 @@ module.exports = {
     'operator-linebreak': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     'object-curly-newline': 'off',
+    'import/prefer-default-export': 'off',
   },
 };
