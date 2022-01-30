@@ -1,19 +1,41 @@
 <template>
   <div class="card">
-    <div>
-      <img
-        v-if="conditionIcon"
-        :src="require(`../assets/icons/weather/${conditionIcon}.png`)"
-      />
-    </div>
-    <div>
-      <span v-if="temperature !== null">{{ `${temperature} °C` }}</span>
-    </div>
-    <div>
-      <span v-if="humidity !== null">{{ `${humidity}%` }}</span>
-    </div>
-    <div>
-      <span v-if="windSpeed !== null">{{ `${windSpeed} km/h` }}</span>
+    <div class="columns-2 flex justify-between">
+      <div class="w-full">
+        <img
+          v-if="conditionIcon"
+          :src="require(`../assets/icons/weather/${conditionIcon}.png`)"
+        />
+      </div>
+      <div class="w-full">
+        <div>
+          <span v-if="temperature !== null" class="flex">
+            <img
+              :src="require(`../assets/icons/weather/thermometer.png`)"
+              class="w-5 mr-5"
+            />
+            {{ `${temperature} °C` }}</span
+          >
+        </div>
+        <div>
+          <span v-if="humidity !== null" class="flex my-4">
+            <img
+              :src="require(`../assets/icons/weather/hygrometer.png`)"
+              class="w-5 mr-5"
+            />
+            {{ `${humidity}%` }}
+          </span>
+        </div>
+        <div>
+          <span v-if="windSpeed !== null" class="flex">
+            <img
+              :src="require(`../assets/icons/weather/wind.png`)"
+              class="w-5 mr-5"
+            />
+            {{ `${windSpeed} km/h` }}
+          </span>
+        </div>
+      </div>
     </div>
   </div>
 </template>

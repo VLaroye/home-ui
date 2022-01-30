@@ -4,9 +4,9 @@
       :class="['flex', 'justify-between', 'items-center', 'w-5/6', 'mx-auto']"
     >
       <div><font-awesome-icon icon="bolt" size="lg" /></div>
-      <div>
+      <router-link to="/">
         <font-awesome-icon icon="home" size="lg" class="text-blue-900" />
-      </div>
+      </router-link>
       <div><font-awesome-icon icon="chart-line" size="lg" /></div>
     </div>
   </div>
