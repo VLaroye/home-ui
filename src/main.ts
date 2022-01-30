@@ -12,6 +12,7 @@ import {
   faChartLine,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import Tabs from 'vue3-tabs';
 import router from './plugins/router';
 import client from './plugins/axios';
 import './css/tailwind.css';
@@ -45,6 +46,7 @@ async function init() {
   app
     .use(AuthPlugin)
     .use(router)
+    .use(Tabs)
     .component('font-awesome-icon', FontAwesomeIcon)
     .mount('#app');
 }

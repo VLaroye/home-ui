@@ -9,15 +9,30 @@
       <div class="mt-3">Tout fermer</div>
     </div>
   </div>
+  <div class="my-3 mx-3">
+    <tabs v-model="selectedTab">
+      <tab label="Salon" val="salon" indicator />
+      <tab label="Salle à manger" val="salle_a_manger" indicator />
+    </tabs>
+    <tab-panels v-model="selectedTab" animate>
+      <tab-panel val="salon">Salon</tab-panel>
+      <tab-panel val="salle_a_manger">Salle à manger</tab-panel>
+    </tab-panels>
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, reactive, toRefs } from 'vue';
+import { Tabs, Tab, TabPanels, TabPanel } from 'vue3-tabs';
 import { startScenario } from '../services/scenario';
 
 export default defineComponent({
   name: 'Shutters',
+  components: { Tabs, Tab, TabPanels, TabPanel },
   setup() {
+    const state = reactive({
+      selectedTab: 'salon',
+    });
     const openShutters = () => {
       startScenario(4);
     };
@@ -26,7 +41,7 @@ export default defineComponent({
       startScenario(1);
     };
 
-    return { openShutters, closeShutters };
+    return { openShutters, closeShutters, ...toRefs(state) };
   },
 });
 </script>
