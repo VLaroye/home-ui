@@ -1,0 +1,26 @@
+{
+    "rooms": [{
+        "name": "Salon",
+        "val": "livingRoom"
+    },
+    {
+        "name": "Salle à manger",
+        "val": "diningRoom"
+    },
+    {
+        "name": "Cuisine",
+        "val": "kitchen"
+    },
+    {
+        "name": "Couloir WC",
+        "val": "wcCorridor"
+    },
+    {
+        "name": "Bureau",
+        "val": "office"
+    },
+    {
+        "name": "Salle de bain",
+        "val": "bathRoom"
+    }]
+}

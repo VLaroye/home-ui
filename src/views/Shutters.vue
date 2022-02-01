@@ -11,12 +11,18 @@
   </div>
   <div class="my-3 mx-3">
     <tabs v-model="selectedTab">
-      <tab label="Salon" val="salon" indicator />
-      <tab label="Salle à manger" val="salle_a_manger" indicator />
+      <tab
+        v-for="room in rooms"
+        :val="room.val"
+        :key="room.val"
+        :label="room.name"
+        indicator
+      />
     </tabs>
     <tab-panels v-model="selectedTab" animate>
-      <tab-panel val="salon">Salon</tab-panel>
-      <tab-panel val="salle_a_manger">Salle à manger</tab-panel>
+      <tab-panel v-for="room in rooms" :val="room.val" :key="room.val">{{
+        room.name
+      }}</tab-panel>
     </tab-panels>
   </div>
 </template>
@@ -25,14 +31,16 @@
 import { defineComponent, reactive, toRefs } from 'vue';
 import { Tabs, Tab, TabPanels, TabPanel } from 'vue3-tabs';
 import { startScenario } from '../services/scenario';
+import rooms from '../config/rooms.json';
 
 export default defineComponent({
   name: 'Shutters',
   components: { Tabs, Tab, TabPanels, TabPanel },
   setup() {
     const state = reactive({
-      selectedTab: 'salon',
+      selectedTab: rooms.rooms[0].val,
     });
+
     const openShutters = () => {
       startScenario(4);
     };
@@ -41,7 +49,12 @@ export default defineComponent({
       startScenario(1);
     };
 
-    return { openShutters, closeShutters, ...toRefs(state) };
+    return {
+      openShutters,
+      closeShutters,
+      rooms: rooms.rooms,
+      ...toRefs(state),
+    };
   },
 });
 </script>
