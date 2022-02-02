@@ -17,7 +17,27 @@
     },
     {
         "name": "Bureau",
-        "val": "office"
+        "val": "office",
+        "shutters": [
+            {
+                "id": 79,
+                "name": "Bureau",
+                "cmd": {
+                    "up": {
+                        "name": "Ouvrir",
+                        "id": 984
+                    },
+                    "down": {
+                        "name": "Fermer",
+                        "id": 985
+                    },
+                    "stop": {
+                        "name": "Stop",
+                        "id": 987
+                    }
+                }
+            }
+        ]
     },
     {
         "name": "Salle de bain",

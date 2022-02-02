@@ -3,7 +3,7 @@
     <div class="top-nav">
       <top-nav />
     </div>
-    <div class="content">
+    <div class="content w-screen overflow-hidden">
       <router-view />
     </div>
     <div class="bottom-nav">

@@ -42,7 +42,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, onMounted, Ref, ref } from 'vue';
-import { Conditions } from '../types/weather';
+import { Conditions } from '../types/weather.types';
 import executeCmd from '../services/cmd';
 
 const conditions = {
