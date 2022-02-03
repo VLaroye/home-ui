@@ -82,18 +82,182 @@
     },
     {
         "name": "Salle à manger",
-        "val": "diningRoom"
+        "val": "diningRoom",
+        "shutters": [
+            {
+                "id": 74,
+                "name": "Baie-vitrée 1",
+                "cmd": {
+                    "up": {
+                        "name": "Ouvrir",
+                        "id": 966
+                    },
+                    "down": {
+                        "name": "Fermer",
+                        "id": 967
+                    }
+                }
+            },
+            {
+                "id": 75,
+                "name": "Baie-vitrée 2",
+                "cmd": {
+                    "up": {
+                        "name": "Ouvrir",
+                        "id": 970
+                    },
+                    "down": {
+                        "name": "Fermer",
+                        "id": 971
+                    }
+                }
+            },
+            {
+                "id": 76,
+                "name": "Baie-vitrée 3",
+                "cmd": {
+                    "up": {
+                        "name": "Ouvrir",
+                        "id": 974
+                    },
+                    "down": {
+                        "name": "Fermer",
+                        "id": 975
+                    }
+                }
+            }
+        ]
     },
     {
         "name": "Cuisine",
-        "val": "kitchen"
+        "val": "kitchen",
+        "shutters": [
+            {
+                "id": 66,
+                "name": "Arrière",
+                "cmd": {
+                    "up": {
+                        "name": "Ouvrir",
+                        "id": 936
+                    },
+                    "down": {
+                        "name": "Fermer",
+                        "id": 934
+                    },
+                    "stop": {
+                        "name": "Stop",
+                        "id": 932
+                    }
+                }
+            },
+            {
+                "id": 70,
+                "name": "Rue",
+                "cmd": {
+                    "up": {
+                        "name": "Ouvrir",
+                        "id": 958
+                    },
+                    "down": {
+                        "name": "Fermer",
+                        "id": 955
+                    },
+                    "stop": {
+                        "name": "Stop",
+                        "id": 952
+                    }
+                }
+            },
+            {
+                "id": 68,
+                "name": "Porte",
+                "cmd": {
+                    "up": {
+                        "name": "Ouvrir",
+                        "id": 947
+                    },
+                    "down": {
+                        "name": "Fermer",
+                        "id": 945
+                    },
+                    "stop": {
+                        "name": "Stop",
+                        "id": 942
+                    }
+                }
+            }
+        ]
     },
     {
         "name": "Couloir WC",
-        "val": "wcCorridor"
+        "val": "wcCorridor",
+        "shutters": [
+            {
+                "id": 71,
+                "name": "Arrière",
+                "cmd": {
+                    "up": {
+                        "name": "Ouvrir",
+                        "id": 959
+                    },
+                    "down": {
+                        "name": "Fermer",
+                        "id": 956
+                    },
+                    "stop": {
+                        "name": "Stop",
+                        "id": 953
+                    }
+                }
+            }
+        ]
     },
     {
         "name": "Salle de bain",
-        "val": "bathRoom"
+        "val": "bathRoom",
+        "shutters": [
+            {
+                "id": 72,
+                "name": "Rue",
+                "cmd": {
+                    "up": {
+                        "name": "Ouvrir",
+                        "id": 960
+                    },
+                    "down": {
+                        "name": "Fermer",
+                        "id": 957
+                    },
+                    "stop": {
+                        "name": "Stop",
+                        "id": 954
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "name": "Cellier",
+        "val": "cellar",
+        "shutters": [
+            {
+                "id": 67,
+                "name": "Rue",
+                "cmd": {
+                    "up": {
+                        "name": "Ouvrir",
+                        "id": 944
+                    },
+                    "down": {
+                        "name": "Fermer",
+                        "id": 941
+                    },
+                    "stop": {
+                        "name": "Stop",
+                        "id": 938
+                    }
+                }
+            }
+        ]
     }]
 }

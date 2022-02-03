@@ -1,5 +1,5 @@
 <template>
-  <div class="my-3 mx-3 flex gap-5 w-screen overflow-hidden">
+  <div class="my-3 mx-3 flex gap-5 overflow-hidden">
     <div class="card w-1/2 flex flex-col items-center" @click="openShutters">
       <img :src="require(`../assets/icons/shutters/open.png`)" class="w-10" />
       <div class="mt-3">Tout ouvrir</div>
@@ -10,7 +10,7 @@
     </div>
   </div>
   <div class="my-3 mx-3">
-    <tabs v-model="selectedTab" class="tabs text-sm px-3">
+    <tabs v-model="selectedTab" class="tabs text-sm">
       <tab
         v-for="room in rooms"
         :val="room.val"
@@ -20,12 +20,12 @@
         class="tab"
       />
     </tabs>
-    <tab-panels v-model="selectedTab" animate class="mt-1">
+    <tab-panels v-model="selectedTab" animate>
       <tab-panel v-for="room in rooms" :val="room.val" :key="room.val">
         <div
           v-for="shutter in room.shutters"
           :key="shutter.id"
-          class="card flex justify-between items-center mt-3"
+          class="card flex justify-between items-center mb-3"
         >
           <div class="text-lg bold">{{ shutter.name }}</div>
           <div>
@@ -96,6 +96,7 @@ export default defineComponent({
 
 .tab {
   white-space: nowrap;
+  padding: 10px 0;
 }
 
 </style>
