@@ -1,20 +1,5 @@
 {
-    "rooms": [{
-        "name": "Salon",
-        "val": "livingRoom"
-    },
-    {
-        "name": "Salle à manger",
-        "val": "diningRoom"
-    },
-    {
-        "name": "Cuisine",
-        "val": "kitchen"
-    },
-    {
-        "name": "Couloir WC",
-        "val": "wcCorridor"
-    },
+    "rooms": [
     {
         "name": "Bureau",
         "val": "office",
@@ -38,6 +23,74 @@
                 }
             }
         ]
+    },
+    {
+        "name": "Salon",
+        "val": "livingRoom",
+        "shutters": [
+            {
+                "id": 78,
+                "name": "Arrière",
+                "cmd": {
+                    "up": {
+                        "name": "Ouvrir",
+                        "id": 979
+                    },
+                    "down": {
+                        "name": "Fermer",
+                        "id": 980
+                    },
+                    "stop": {
+                        "name": "Stop",
+                        "id": 982
+                    }
+                }
+            },
+            {
+                "id": 65,
+                "name": "Rue",
+                "cmd": {
+                    "up": {
+                        "name": "Ouvrir",
+                        "id": 935
+                    },
+                    "down": {
+                        "name": "Fermer",
+                        "id": 983
+                    },
+                    "stop": {
+                        "name": "Stop",
+                        "id": 931
+                    }
+                }
+            },
+            {
+                "id": 0,
+                "name": "Baie-vitrée",
+                "cmd": {
+                    "up": {
+                        "name": "Ouvrir",
+                        "id": 8
+                    },
+                    "down": {
+                        "name": "Fermer",
+                        "id": 9
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "name": "Salle à manger",
+        "val": "diningRoom"
+    },
+    {
+        "name": "Cuisine",
+        "val": "kitchen"
+    },
+    {
+        "name": "Couloir WC",
+        "val": "wcCorridor"
     },
     {
         "name": "Salle de bain",

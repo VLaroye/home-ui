@@ -10,6 +10,9 @@ import {
   faBars,
   faBolt,
   faChartLine,
+  faArrowUp,
+  faArrowDown,
+  faStop,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import Tabs from 'vue3-tabs';
@@ -42,6 +45,9 @@ async function init() {
     faBars,
     faBolt,
     faChartLine,
+    faArrowUp,
+    faArrowDown,
+    faStop,
   );
   app
     .use(AuthPlugin)

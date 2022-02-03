@@ -1,6 +1,6 @@
 import client from '../plugins/axios';
 
-export default async (id: number): Promise<any> => {
+export const executeCmd = async (id: number): Promise<any> => {
   try {
     const response = await client.get('/', {
       params: { type: 'cmd', id },

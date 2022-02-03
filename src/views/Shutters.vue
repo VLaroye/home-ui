@@ -20,10 +20,25 @@
         class="tab"
       />
     </tabs>
-    <tab-panels v-model="selectedTab" animate class="mt-2">
+    <tab-panels v-model="selectedTab" animate class="mt-1">
       <tab-panel v-for="room in rooms" :val="room.val" :key="room.val">
-        <div v-for="shutter in room.shutters" :key="shutter.id" class="card">
-          {{ shutter.name }}
+        <div
+          v-for="shutter in room.shutters"
+          :key="shutter.id"
+          class="card flex justify-between items-center mt-3"
+        >
+          <div class="text-lg bold">{{ shutter.name }}</div>
+          <div>
+            <div v-if="shutter.cmd.up" @click="() => executeCmd(shutter.cmd.up.id)">
+              <font-awesome-icon icon="arrow-up" size="lg" class="text-gray-500 mb-3" />
+            </div>
+            <div v-if="shutter.cmd.stop" @click="() => executeCmd(shutter.cmd.stop.id)">
+              <font-awesome-icon icon="stop" size="lg" class="text-gray-500 my-2" />
+            </div>
+            <div v-if="shutter.cmd.down" @click="() => executeCmd(shutter.cmd.down.id)">
+              <font-awesome-icon icon="arrow-down" size="lg" class="text-gray-500 mt-3" />
+            </div>
+          </div>
         </div>
       </tab-panel>
     </tab-panels>
@@ -34,6 +49,7 @@
 import { defineComponent, reactive, toRefs } from 'vue';
 import { Tabs, Tab, TabPanels, TabPanel } from 'vue3-tabs';
 import { startScenario } from '../services/scenario';
+import { executeCmd } from '../services/cmd';
 import { Room } from '../types/rooms.types';
 import roomsJSON from '../config/rooms.json';
 
@@ -59,6 +75,7 @@ export default defineComponent({
       openShutters,
       closeShutters,
       rooms,
+      executeCmd,
       ...toRefs(state),
     };
   },
@@ -70,8 +87,15 @@ export default defineComponent({
   flex-wrap: nowrap;
   width: 100vw;
   overflow-x: auto;
+
+  &::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+  }
 }
+
 .tab {
   white-space: nowrap;
 }
+
 </style>
