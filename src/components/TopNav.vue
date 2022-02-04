@@ -12,12 +12,12 @@
       'shadow-xl',
     ]"
   >
-    <div>
+    <a :href="logoutURL">
       <span v-if="user.picture"
         ><img :src="user.picture" class="profile-pic"
       /></span>
       <span v-else><font-awesome-icon icon="user" size="lg" /></span>
-    </div>
+    </a>
     <div class="text-gray-600 font-bold message">
       <span v-if="user">Welcome home, {{ user.name }} !</span>
     </div>
@@ -38,7 +38,11 @@ export default defineComponent({
     const $auth: AuthPlugin | undefined = inject('Auth');
     const user = computed(() => $auth?.user);
 
-    return { user: user.value };
+    const baseURL = window.location.origin;
+
+    const logoutURL = `https://${process.env.VUE_APP_AUTH0_DOMAIN}/v2/logout?client_id=${process.env.VUE_APP_AUTH0_CLIENT_KEY}&returnTo=${baseURL}`;
+
+    return { user: user.value, logoutURL };
   },
 });
 </script>
