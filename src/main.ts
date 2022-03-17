@@ -18,6 +18,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import Tabs from 'vue3-tabs';
 import router from './plugins/router';
 import client from './plugins/axios';
+import ripple from './directives/ripple';
 import './css/tailwind.css';
 
 import App from './App.vue';
@@ -36,6 +37,7 @@ async function init() {
     redirectUri: window.location.origin,
   });
   const app = createApp(App);
+  app.directive('ripple', ripple);
   app.provide('$http', client);
   library.add(
     faColumns,

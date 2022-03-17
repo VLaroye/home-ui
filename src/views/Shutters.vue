@@ -29,14 +29,41 @@
         >
           <div class="text-lg bold">{{ shutter.name }}</div>
           <div>
-            <div v-if="shutter.cmd.up" @click="() => executeCmd(shutter.cmd.up.id)">
-              <font-awesome-icon icon="arrow-up" size="lg" class="text-gray-500 mb-3" />
+            <div
+              class="relative"
+              v-if="shutter.cmd.up"
+              @click="() => executeCmd(shutter.cmd.up.id)"
+              v-ripple
+            >
+              <font-awesome-icon
+                icon="arrow-up"
+                size="lg"
+                class="text-gray-500 mb-3"
+              />
             </div>
-            <div v-if="shutter.cmd.stop" @click="() => executeCmd(shutter.cmd.stop.id)">
-              <font-awesome-icon icon="stop" size="lg" class="text-gray-500 my-2" />
+            <div
+              class="relative"
+              v-if="shutter.cmd.stop"
+              @click="() => executeCmd(shutter.cmd.stop.id)"
+              v-ripple
+            >
+              <font-awesome-icon
+                icon="stop"
+                size="lg"
+                class="text-gray-500 my-2"
+              />
             </div>
-            <div v-if="shutter.cmd.down" @click="() => executeCmd(shutter.cmd.down.id)">
-              <font-awesome-icon icon="arrow-down" size="lg" class="text-gray-500 mt-3" />
+            <div
+              class="relative"
+              v-if="shutter.cmd.down"
+              @click="() => executeCmd(shutter.cmd.down.id)"
+              v-ripple
+            >
+              <font-awesome-icon
+                icon="arrow-down"
+                size="lg"
+                class="text-gray-500 mt-3"
+              />
             </div>
           </div>
         </div>
@@ -89,8 +116,8 @@ export default defineComponent({
   overflow-x: auto;
 
   &::-webkit-scrollbar {
-    width: 0;  /* Remove scrollbar space */
-    background: transparent;  /* Optional: just make scrollbar invisible */
+    width: 0; /* Remove scrollbar space */
+    background: transparent; /* Optional: just make scrollbar invisible */
   }
 }
 
@@ -98,5 +125,4 @@ export default defineComponent({
   white-space: nowrap;
   padding: 10px 0;
 }
-
 </style>
